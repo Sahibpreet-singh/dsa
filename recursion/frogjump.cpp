@@ -6,8 +6,8 @@ using namespace std;
 int f(vector<int>arr,int n){
     if(n<=0)return 0;
    
-    int take=f(arr,n-1)+abs(arr[n]-arr[n-1]);
-   int ntake;
+    int jump=f(arr,n-1)+abs(arr[n]-arr[n-1]);
+   int notjump;
     if(n>1){
         ntake=f(arr,n-2)+abs(arr[n]-arr[n-2]);
     }
@@ -19,11 +19,9 @@ int main() {
     int n;
     cin>>n;
     vector<int>arr(n);
-    
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    
     cout<<f(arr,n-1);  
     
     return 0;
