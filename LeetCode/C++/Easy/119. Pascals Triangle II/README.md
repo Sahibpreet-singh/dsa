@@ -1,6 +1,6 @@
 # 📝 119. Pascal's Triangle II (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/pascals-triangle-ii)
+🔗 [Problem Link](https://leetcode.com/problems/pascals-triangle-ii/)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) ![Language](https://img.shields.io/badge/Language-C++-blue)
 
