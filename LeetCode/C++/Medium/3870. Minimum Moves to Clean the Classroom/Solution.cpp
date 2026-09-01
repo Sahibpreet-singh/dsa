@@ -4,52 +4,41 @@ public:
         int m = classroom.size();
         int n = classroom[0].size();
 
-        int sr = -1, sc = -1;
-        vector<pair<int,int>> litter;
+        int sr, sc;
+        vector<vector<int>> id(m, vector<int>(n, -1));
 
-        // Find S and all L
+        int k = 0;
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+
                 if (classroom[i][j] == 'S') {
                     sr = i;
                     sc = j;
                 }
-                else if (classroom[i][j] == 'L') {
-                    litter.push_back({i, j});
+
+                if (classroom[i][j] == 'L') {
+                    id[i][j] = k++;
                 }
             }
         }
 
-        int k = litter.size();
-
-        // All litter already collected
-        if (k == 0) {
+        if (k == 0)
             return 0;
-        }
-
-        // Give every litter cell a bit
-        vector<vector<int>> litterId(m, vector<int>(n, -1));
-
-        for (int i = 0; i < k; i++) {
-            litterId[litter[i].first][litter[i].second] = i;
-        }
 
         int fullMask = (1 << k) - 1;
 
-        /*
-            visited[r][c][mask][energy]
+        // best[r][c][mask] = maximum energy reached
+        vector<vector<vector<int>>> best(
+            m,
+            vector<vector<int>>(n, vector<int>(1 << k, -1))
+        );
 
-            We flatten the dimensions into one unordered_set
-            to avoid a potentially huge 4D vector.
-        */
+        queue<tuple<int, int, int, int>> q;
 
-        queue<tuple<int,int,int,int>> q;
-
-        // r, c, mask, remaining energy
+        // r, c, mask, energy
         q.push({sr, sc, 0, energy});
-
-        set<tuple<int,int,int,int>> visited;
-        visited.insert({sr, sc, 0, energy});
+        best[sr][sc][0] = energy;
 
         int dr[] = {-1, 1, 0, 0};
         int dc[] = {0, 0, -1, 1};
@@ -65,51 +54,49 @@ public:
                 auto [r, c, mask, en] = q.front();
                 q.pop();
 
-                // All litter collected
-                if (mask == fullMask) {
+                if (mask == fullMask)
                     return moves;
-                }
+
+                if (en == 0)
+                    continue;
 
                 for (int d = 0; d < 4; d++) {
 
                     int nr = r + dr[d];
                     int nc = c + dc[d];
 
-                    // Outside grid
-                    if (nr < 0 || nr >= m || nc < 0 || nc >= n) {
+                    if (nr < 0 || nr >= m ||
+                        nc < 0 || nc >= n)
                         continue;
-                    }
 
-                    // Obstacle
-                    if (classroom[nr][nc] == 'X') {
+                    if (classroom[nr][nc] == 'X')
                         continue;
-                    }
-
-                    // Need energy for the move
-                    if (en == 0) {
-                        continue;
-                    }
 
                     int newEnergy = en - 1;
                     int newMask = mask;
 
                     // Collect litter
                     if (classroom[nr][nc] == 'L') {
-                        int id = litterId[nr][nc];
-                        newMask |= (1 << id);
+                        newMask |= (1 << id[nr][nc]);
                     }
 
-                    // Reset energy
+                    // Reset
                     if (classroom[nr][nc] == 'R') {
                         newEnergy = energy;
                     }
 
-                    auto state = make_tuple(nr, nc, newMask, newEnergy);
+                    // Already reached with >= energy
+                    if (best[nr][nc][newMask] >= newEnergy)
+                        continue;
 
-                    if (!visited.count(state)) {
-                        visited.insert(state);
-                        q.push(state);
-                    }
+                    best[nr][nc][newMask] = newEnergy;
+
+                    q.push({
+                        nr,
+                        nc,
+                        newMask,
+                        newEnergy
+                    });
                 }
             }
 
