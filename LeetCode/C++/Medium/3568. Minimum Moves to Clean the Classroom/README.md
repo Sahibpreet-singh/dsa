@@ -1,6 +1,6 @@
 # 📝 3568. Minimum Moves to Clean the Classroom (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/minimum-moves-to-clean-the-classroom/?envType=daily-question&envId=2026-09-01)
+🔗 [Problem Link](https://leetcode.com/problems/minimum-moves-to-clean-the-classroom)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-orange) ![Language](https://img.shields.io/badge/Language-C++-blue)
 
