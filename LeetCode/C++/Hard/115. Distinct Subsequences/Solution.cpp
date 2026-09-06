@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int f(string &s,string &t,int i,int j){
+    int f(string &s,string &t,int i,int j,vect){
         if(j==t.size()) return 1;
         if(i==s.size()) return 0;
 
