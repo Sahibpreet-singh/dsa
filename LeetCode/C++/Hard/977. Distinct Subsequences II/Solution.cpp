@@ -1,20 +1,25 @@
 class Solution {
 public:
-    void f(string &s,int i,string current,set<string>&st){
-        if(i==s.size()){
-            if(!current.empty()){
-                st.insert(current);
-            }
-            return;
-        }
-        
-        f(s,i+1,current+s[i],st);
-        f(s,i+1,current,st);
-
-    }
     int distinctSubseqII(string s) {
-        set<string> st;
-        f(s,0,"",st);   
-        return st.size();
+        int n = s.size();
+        int MOD = 1e9 + 7;
+
+        vector<int> countEndWith(26, 0);
+
+        int sum = 0;
+
+        for(int i = 0; i < n; i++){
+            int idx = s[i] - 'a';
+
+            // Create new subsequences and remove duplicates
+            int cur = (1 + sum - countEndWith[idx] + MOD) % MOD;
+
+            sum = (sum + cur) % MOD;
+
+            // Update subsequences ending with this character
+            countEndWith[idx] = (countEndWith[idx] + cur) % MOD;
+        }
+
+        return sum;
     }
 };
