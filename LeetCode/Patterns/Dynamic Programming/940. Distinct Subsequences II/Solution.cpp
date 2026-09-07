@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void f(string &s,int i,string current,set<string>&st){
+    void f(string &s,int i,string current,set<string>&st,vector<int>&dp){
         if(i==s.size()){
             if(!current.empty()){
                 st.insert(current);
