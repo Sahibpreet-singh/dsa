@@ -2,23 +2,24 @@ class Solution {
 public:
     int distinctSubseqII(string s) {
         int n = s.size();
+        int MOD = 1e9 + 7;
 
-        vector<set<string>> dp(n + 1);
+        vector<int> countEndWith(26, 0);
 
-        for (int i = 1; i <= n; i++) {
+        int sum = 0;
 
-            // Skip s[i-1]
-            dp[i] = dp[i - 1];
+        for(int i = 0; i < n; i++){
+            int idx = s[i] - 'a';
 
-            // Take s[i-1]
-            for (string x : dp[i - 1]) {
-                dp[i].insert(x + s[i - 1]);
-            }
+            // Create new subsequences and remove duplicates
+            int cur = (1 + sum - countEndWith[idx] + MOD) % MOD;
 
-            // s[i-1] alone
-            dp[i].insert(string(1, s[i - 1]));
+            sum = (sum + cur) % MOD;
+
+            // Update subsequences ending with this character
+            countEndWith[idx] = (countEndWith[idx] + cur) % MOD;
         }
 
-        return dp[n].size();
+        return sum;
     }
-};  
+};
