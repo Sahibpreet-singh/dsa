@@ -1,6 +1,6 @@
 # 📝 940. Distinct Subsequences II (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/distinct-subsequences-ii/?envType=daily-question&envId=2026-09-07)
+🔗 [Problem Link](https://leetcode.com/problems/distinct-subsequences-ii)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Hard-red) ![Language](https://img.shields.io/badge/Language-C++-blue)
 
