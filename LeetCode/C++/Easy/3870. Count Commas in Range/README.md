@@ -1,6 +1,6 @@
 # 📝 3870. Count Commas in Range (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/count-commas-in-range)
+🔗 [Problem Link](https://leetcode.com/problems/count-commas-in-range/solutions/8500562/count-commas-in-range-by-leetcode-u6jq/?envType=daily-question&envId=2026-09-08)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) ![Language](https://img.shields.io/badge/Language-C++-blue)
 
@@ -8,7 +8,7 @@
 Math
 
 ### 🚀 Performance
-- **Runtime:** Successfully Evaluated
+- **Runtime:** N/A
 - **Memory:** N/A
 
 ---
