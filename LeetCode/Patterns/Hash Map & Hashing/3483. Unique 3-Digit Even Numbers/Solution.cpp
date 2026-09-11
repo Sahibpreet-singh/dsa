@@ -1,21 +1,34 @@
 class Solution {
 public:
     int totalNumbers(vector<int>& digits) {
-        sort(digits.begin(), digits.end());
+        vector<int> freq(10, 0);
 
-        int ans = 0;
+        for (int d : digits) {
+            freq[d]++;
+        }
 
-        do {
-            // First digit cannot be 0
-            if (digits[0] == 0)
-                continue;
+        int count = 0;
 
-            // Last digit must be even
-            if (digits[2] % 2 == 0)
-                ans++;
+        for (int num = 100; num <= 999; num += 2) {
+            int ones = num % 10;
+            int tens = (num / 10) % 10;
+            int hundreds = num / 100;
 
-        } while (next_permutation(digits.begin(), digits.end()));
+            freq[hundreds]--;
+            freq[tens]--;
+            freq[ones]--;
 
-        return ans;
+            if (freq[hundreds] >= 0 &&
+                freq[tens] >= 0 &&
+                freq[ones] >= 0) {
+                count++;
+            }
+
+            freq[hundreds]++;
+            freq[tens]++;
+            freq[ones]++;
+        }
+
+        return count;
     }
 };

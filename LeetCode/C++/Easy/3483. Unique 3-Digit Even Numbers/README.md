@@ -1,6 +1,6 @@
 # 📝 3483. Unique 3-Digit Even Numbers (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/unique-3-digit-even-numbers/?envType=daily-question&envId=2026-09-11)
+🔗 [Problem Link](https://leetcode.com/problems/unique-3-digit-even-numbers)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) ![Language](https://img.shields.io/badge/Language-C++-blue)
 
@@ -8,7 +8,7 @@
 Array, Hash Table, Recursion, Enumeration
 
 ### 🚀 Performance
-- **Runtime:** Successfully Evaluated
+- **Runtime:** N/A
 - **Memory:** N/A
 
 ---
