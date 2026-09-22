@@ -8,8 +8,8 @@
 Array, Math, Segment Tree
 
 ### 🚀 Performance
-- **Runtime:** N/A
-- **Memory:** N/A
+- **Runtime:** 226 ms
+- **Memory:** 273.1 MB
 
 ---
 
